@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 import { db } from '@/firebase'
 import { collection, getDocs } from 'firebase/firestore'
 
-const tabela = ref([]).sort((a,b) => a.pontos == b.pontos ? (b.pontos + b.gols_pro - b.gols_contra) - (a.pontos + a.gols_pro - a.gols_contra): b.pontos - a.pontos)
+const tabela = ref([])
 
 onMounted(async () => {
   const querySnapshot = await getDocs(collection(db, 'times'))
@@ -32,7 +32,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="table-page">
-  oi
+  
     <h1>TABELA</h1>
     <table>
       <thead>
@@ -51,7 +51,7 @@ onMounted(async () => {
         </tr>
       </thead>
       <tbody>
-     <tr v-for="time in tabela" :key="time.id">
+     <tr v-for="time in tabela.sort((a,b) => a.pontos == b.pontos ? (b.pontos + b.gols_pro - b.gols_contra) - (a.pontos + a.gols_pro - a.gols_contra): b.pontos - a.pontos)" :key="time.id">
           <td style="font-weight: 900">
             <div class="nomeTime-box">
               <span>{{ tabela.indexOf(time) + 1 }}º </span>
