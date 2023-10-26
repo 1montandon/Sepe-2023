@@ -32,7 +32,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="table-page">
-  
+  oi
     <h1>TABELA</h1>
     <table>
       <thead>
