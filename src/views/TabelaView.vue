@@ -21,6 +21,7 @@ onMounted(async () => {
       aproveitamento: doc.data().porcentagem,
       escudo: doc.data().escudo,
       pontos: doc.data().vitorias * 3 + doc.data().empates,
+      ultJogos: doc.data().ultJogos,
       
     }
     test.push(time)
@@ -120,7 +121,7 @@ onMounted(async () => {
           <td class="marks">{{ Number(time.vitorias) / Number(time.jogos) * 100 }}</td>
           <td class="ult_jogos">
             <span
-              v-for="jogo in time.ultimos_jogos"
+              v-for="jogo in time.ultJogos"
               :key="jogo.legth"
               :class="jogo == 'v' ? 'v' : jogo == 'd' ? 'd' : 'e'"
             >
